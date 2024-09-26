@@ -199,3 +199,12 @@ Board.prototype.renderAllPieces = function() {
         }
     });
 };
+
+Board.prototype.invalidMove = function(){
+    this.selectedPiece = false;
+}
+
+Board.prototype.toggle = function(){
+    this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
+    this.selectedPiece = false;
+}
