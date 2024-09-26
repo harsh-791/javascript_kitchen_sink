@@ -15,7 +15,7 @@ Rook.prototype.isValidPosition = function(targetPosition) {
     let targetRow = parseInt(targetPosition.row);
 
     // Moving straight
-    if (this.color !== this.board.turn) {
+    if (this.color !== this.board.currentPlayer) {
         console.warn("Not your turn");
         return false;
     }
@@ -64,10 +64,11 @@ Rook.prototype.moveTo = function(targetPosition){
         let targetPiece = this.board.getPieceAt({col :targetPosition.col , row : targetPosition.row});
         
         if(targetPiece && targetPiece.color !== this.color){
-            console.log("Opponents piece");
+            console.log("Killing opponent's piece:", targetPiece);
+            this.kill(targetPiece);
         }
         this.position = targetPosition.col  + targetPosition.row;
         this.render();
-        this.board.turn = this.board.turn === 'white' ? 'black' : 'white';
+        this.board.currentPlayer = this.board.currentPlayer === 'white' ? 'black' : 'white';
     }
 }
