@@ -69,6 +69,6 @@ Rook.prototype.moveTo = function(targetPosition){
         }
         this.position = targetPosition.col  + targetPosition.row;
         this.render();
-        this.board.currentPlayer = this.board.currentPlayer === 'white' ? 'black' : 'white';
+        this.board.switchPlayer();
     }
 }
